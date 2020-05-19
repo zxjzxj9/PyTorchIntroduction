@@ -1,0 +1,5 @@
+- func: func_name(ArgType arg0[=default],  ...) -> Return
+  variants: function, method
+  dispatch:
+    CPU: func_cpu
+    CUDA: func_cuda
