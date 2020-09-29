@@ -6,7 +6,7 @@ import torch.nn as nn
 
 #  生成器的定义
 class Generator(nn.Module):
-    def __init__(self, ngpu):
+    def __init__(self, nz, ngf):
         super(Generator, self).__init__()
         self.main = nn.Sequential(
 
@@ -36,7 +36,7 @@ class Generator(nn.Module):
 
 # 判别器的定义
 class Discriminator(nn.Module):
-    def __init__(self, ngpu):
+    def __init__(self, nc, ndf):
         super(Discriminator, self).__init__()
         self.main = nn.Sequential(
 
@@ -67,8 +67,10 @@ class Discriminator(nn.Module):
 # DCGAN的训练代码
 
 def train():
-    netG = Generator(ngpu).to(device)
-    netD = Discriminator(ngpu).to(device)
+    # nz: 隐含变量的维度
+    # ngf, ncf: 生成器和判别器的特征维度
+    netG = Generator(nz, ngf).to(device)
+    netD = Discriminator(nc, ndf).to(device)
     criterion = nn.BCELoss()
     optimizerD = optim.Adam(netD.parameters(), lr=opt.lr,
         betas=(opt.beta1, 0.999))
