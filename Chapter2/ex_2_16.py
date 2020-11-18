@@ -8,7 +8,7 @@ import torch
 t1 = torch.randn(3,4) # 随机产生四个张量
 t2 = torch.randn(3,4)
 t3 = torch.randn(3,4)
-t4 = torch.radnn(3,2) # 沿着最后一个维度做堆叠，返回大小为3×4×3的张量
+t4 = torch.randn(3,2) # 沿着最后一个维度做堆叠，返回大小为3×4×3的张量
 torch.stack([t1,t2,t3], -1).shape
 torch.cat([t1,t2,t3,t4], -1).shape # 沿着最后一个维度做拼接，返回大小为3×14的张量
 t = torch.randn(3, 6) # 随机产生一个3×6的张量
